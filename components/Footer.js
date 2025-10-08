@@ -225,41 +225,40 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Quick Navigation */}
-            <div ref={el => sectionsRef.current[1] = el} className="lg:col-span-1" style={{ opacity: 0 }}>
-              <h3 className="text-xl font-bold mb-6 text-white">Quick Navigation</h3>
-              <ul className="space-y-3">
-                {navigationSections.map((item) => (
-                  <li key={item.id}>
-                    <button
-                      onClick={() => scrollToSection(item.id)}
-                      className="text-gray-300 hover:text-amber-400 transition-colors duration-300 hover:translate-x-1 transform inline-block"
-                    >
-                      {item.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Quick Navigation */}
+          <div ref={el => sectionsRef.current[1] = el} className="lg:col-span-1" style={{ opacity: 0 }}>
+            <h3 className="text-xl font-bold mb-6 text-white">Quick Navigation</h3>
+            <ul className="space-y-3">
+              {navigationSections.map((item) => (
+                <li key={item.id}>
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-gray-300 hover:text-amber-400 transition-colors duration-300 hover:translate-x-1 transform inline-block"
+                  >
+                    {item.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Services */}
-            <div ref={el => sectionsRef.current[2] = el} className="lg:col-span-1" style={{ opacity: 0 }}>
-              <h3 className="text-xl font-bold mb-6 text-white">Our Services</h3>
-              <ul className="space-y-3">
-                {services.map((service, index) => (
-                  <li key={index}>
-                    <span className="text-gray-300 hover:text-amber-400 transition-colors duration-300 cursor-pointer hover:translate-x-1 transform inline-block">
-                      {service}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Services */}
+          <div ref={el => sectionsRef.current[2] = el} className="lg:col-span-1" style={{ opacity: 0 }}>
+            <h3 className="text-xl font-bold mb-6 text-white">Services</h3>
+            <ul className="space-y-3">
+              {services.map((svc) => (
+                <li key={svc} className="text-gray-300 hover:text-amber-400 transition-colors duration-300">
+                  {svc}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Contact Info */}
-            <div ref={el => sectionsRef.current[3] = el} className="lg:col-span-1" style={{ opacity: 0 }}>
-              <h3 className="text-xl font-bold mb-6 text-white">Get In Touch</h3>
-              <div className="space-y-4">
+
+          {/* Contact Info */}
+          <div ref={el => sectionsRef.current[3] = el} className="lg:col-span-1" style={{ opacity: 0 }}>
+            <h3 className="text-xl font-bold mb-6 text-white">Get In Touch</h3>
+            <div className="space-y-4">
                 <div ref={el => contactInfoRef.current[0] = el} className="flex items-start space-x-3" style={{ opacity: 0 }}>
                   <svg className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -21,14 +21,15 @@ const Header = () => {
   const mobileNavItemsRef = useRef([]);
   const menuButtonRef = useRef(null);
   const contactButtonRef = useRef(null);
+  const isHeaderOpaqueRef = useRef(false);
 
-  const navigationItems = [
+  const navigationItems = useMemo(() => ([
     { name: 'Home', href: '#home', id: 'home' },
     { name: 'Services', href: '#services', id: 'services' },
     { name: 'Gallery', href: '#gallery', id: 'gallery' },
     { name: 'Testimonials', href: '#testimonials', id: 'testimonials' },
     { name: 'Contact', href: '#contact', id: 'contact' }
-  ];
+  ]), []);
 
   // Smooth scroll function
   const scrollToSection = (sectionId) => {
@@ -129,6 +130,7 @@ const Header = () => {
                   boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
                   duration: 0.3
                 });
+                isHeaderOpaqueRef.current = true;
               } else if (self.direction === -1 && self.progress < 0.1) {
                 gsap.to(headerRef.current, {
                   backgroundColor: "rgba(255, 255, 255, 0)",
@@ -136,6 +138,7 @@ const Header = () => {
                   boxShadow: "none",
                   duration: 0.3
                 });
+                isHeaderOpaqueRef.current = false;
               }
             }
           });
@@ -161,6 +164,7 @@ const Header = () => {
 
             // Hover animations
             item.addEventListener('mouseenter', () => {
+              if (!isHeaderOpaqueRef.current) return;
               gsap.to(item, {
                 y: -2,
                 scale: 1.05,
@@ -170,6 +174,7 @@ const Header = () => {
             });
 
             item.addEventListener('mouseleave', () => {
+              if (!isHeaderOpaqueRef.current) return;
               gsap.to(item, {
                 y: 0,
                 scale: 1,
@@ -206,6 +211,7 @@ const Header = () => {
           contactButtonRef.current.appendChild(shineEffect);
 
           contactButtonRef.current.addEventListener('mouseenter', () => {
+            if (!isHeaderOpaqueRef.current) return;
             gsap.to(contactButtonRef.current, {
               scale: 1.05,
               y: -2,
@@ -218,6 +224,7 @@ const Header = () => {
           });
 
           contactButtonRef.current.addEventListener('mouseleave', () => {
+            if (!isHeaderOpaqueRef.current) return;
             gsap.to(contactButtonRef.current, {
               scale: 1,
               y: 0,
@@ -239,6 +246,7 @@ const Header = () => {
           );
 
           menuButtonRef.current.addEventListener('mouseenter', () => {
+            if (!isHeaderOpaqueRef.current) return;
             gsap.to(menuButtonRef.current, {
               scale: 1.1,
               rotation: 5,
@@ -248,6 +256,7 @@ const Header = () => {
           });
 
           menuButtonRef.current.addEventListener('mouseleave', () => {
+            if (!isHeaderOpaqueRef.current) return;
             gsap.to(menuButtonRef.current, {
               scale: 1,
               rotation: 0,
@@ -279,7 +288,7 @@ const Header = () => {
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, []);
+  }, [navigationItems]);
 
   return (
     <header 
