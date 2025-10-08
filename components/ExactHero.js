@@ -160,7 +160,7 @@ const ExactHero = () => {
           {/* Left Column - Text Content */}
           <div 
             ref={textRef}
-            className="w-full lg:w-[45%] max-w-2xl order-1 lg:order-1"
+            className="w-full lg:w-[45%] max-w-2xl order-1 lg:order-1 text-center md:text-left"
           >
             <div className="inline-block bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4 blue-badge">
               35 Frames Photography - Bangalore
@@ -178,7 +178,7 @@ const ExactHero = () => {
               Frame by Frame
             </h2>
             
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 max-w-xl">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 max-w-xl mx-auto md:mx-0">
               Your Story, Beautifully Captured & Perfectly Designed. At 35 Frames Photography, we offer you a sweet ride to your Wedding Day with professional photography and videography services in Bangalore.
             </p>
             

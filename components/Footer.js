@@ -225,39 +225,36 @@ const Footer = () => {
               </div>
             </div>
 
-          {/* Quick Navigation */}
+          {/* Quick Navigation (removed heading and list semantics) */}
           <div ref={el => sectionsRef.current[1] = el} className="lg:col-span-1" style={{ opacity: 0 }}>
-            <h3 className="text-xl font-bold mb-6 text-white">Quick Navigation</h3>
-            <ul className="space-y-3">
+            <div className="space-y-3">
               {navigationSections.map((item) => (
-                <li key={item.id}>
+                <div key={item.id}>
                   <button
                     onClick={() => scrollToSection(item.id)}
                     className="text-gray-300 hover:text-amber-400 transition-colors duration-300 hover:translate-x-1 transform inline-block"
                   >
                     {item.name}
                   </button>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Services */}
+          {/* Services (removed heading and list semantics) */}
           <div ref={el => sectionsRef.current[2] = el} className="lg:col-span-1" style={{ opacity: 0 }}>
-            <h3 className="text-xl font-bold mb-6 text-white">Services</h3>
-            <ul className="space-y-3">
+            <div className="space-y-3">
               {services.map((svc) => (
-                <li key={svc} className="text-gray-300 hover:text-amber-400 transition-colors duration-300">
+                <div key={svc} className="text-gray-300 hover:text-amber-400 transition-colors duration-300">
                   {svc}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
 
-          {/* Contact Info */}
+          {/* Contact Info (removed heading) */}
           <div ref={el => sectionsRef.current[3] = el} className="lg:col-span-1" style={{ opacity: 0 }}>
-            <h3 className="text-xl font-bold mb-6 text-white">Get In Touch</h3>
             <div className="space-y-4">
                 <div ref={el => contactInfoRef.current[0] = el} className="flex items-start space-x-3" style={{ opacity: 0 }}>
                   <svg className="w-5 h-5 text-amber-400 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -293,7 +290,7 @@ const Footer = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-gray-400 text-sm">
-                © 2024 35 Frames Photography. All rights reserved.
+                © 2025 35 Frames Photography. All rights reserved.
               </p>
               <div className="flex space-x-6 text-sm">
                 <a href="#" className="text-gray-400 hover:text-amber-400 transition-colors duration-300">

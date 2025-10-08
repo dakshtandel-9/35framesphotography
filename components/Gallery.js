@@ -55,60 +55,36 @@ const Gallery = () => {
     };
   }, []);
 
-  // Sample gallery images (AI-generated headshots)
-  const row1Images = [
-    {
-      src: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a businessman'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a businesswoman'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a young man'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a young woman'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a man in suit'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a woman in business attire'
-    }
+  // Use local public/gallaryImage images and split half per row
+  const allImages = [
+    { src: '/gallaryImage/G1.jpg', alt: 'Gallery image 1' },
+    { src: '/gallaryImage/G2.jpg', alt: 'Gallery image 2' },
+    { src: '/gallaryImage/G3.webp', alt: 'Gallery image 3' },
+    { src: '/gallaryImage/G4.jpg', alt: 'Gallery image 4' },
+    { src: '/gallaryImage/G5.jpg', alt: 'Gallery image 5' },
+    { src: '/gallaryImage/G6.jpg', alt: 'Gallery image 6' },
+    { src: '/gallaryImage/G7.jpg', alt: 'Gallery image 7' },
+    { src: '/gallaryImage/G8.jpg', alt: 'Gallery image 8' },
+    { src: '/gallaryImage/G9.jpg', alt: 'Gallery image 9' },
+    { src: '/gallaryImage/G10.jpg', alt: 'Gallery image 10' },
+    { src: '/gallaryImage/G11.jpg', alt: 'Gallery image 11' },
+    { src: '/gallaryImage/G12.jpg', alt: 'Gallery image 12' },
+    { src: '/gallaryImage/G13.jpg', alt: 'Gallery image 13' },
+    { src: '/gallaryImage/G14.jpg', alt: 'Gallery image 14' },
+    { src: '/gallaryImage/G15.jpg', alt: 'Gallery image 15' },
+    { src: '/gallaryImage/G16.jpg', alt: 'Gallery image 16' },
+    { src: '/gallaryImage/G17.jpg', alt: 'Gallery image 17' },
+    { src: '/gallaryImage/G18.jpg', alt: 'Gallery image 18' },
+    { src: '/gallaryImage/G19.jpg', alt: 'Gallery image 19' },
+    { src: '/gallaryImage/G20.jpg', alt: 'Gallery image 20' },
+    { src: '/gallaryImage/G21.jpg', alt: 'Gallery image 21' },
+    { src: '/gallaryImage/G22.jpg', alt: 'Gallery image 22' },
+    { src: '/gallaryImage/G23.jpg', alt: 'Gallery image 23' },
+    { src: '/gallaryImage/G24.jpg', alt: 'Gallery image 24' },
   ];
-
-  const row2Images = [
-    {
-      src: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a woman with glasses'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a young man smiling'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a woman with long hair'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a man with glasses'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a woman smiling'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Professional headshot of a woman with short hair'
-    }
-  ];
+  const midpoint = Math.ceil(allImages.length / 2);
+  const row1Images = allImages.slice(0, midpoint);
+  const row2Images = allImages.slice(midpoint);
 
   return (
     <section ref={sectionRef} className="py-16 bg-gray-50 overflow-hidden">
@@ -125,10 +101,10 @@ const Gallery = () => {
       <div className="relative mb-8 py-4">
         <div 
           ref={row1Ref} 
-          className="flex space-x-6 w-[200%]"
+          className="flex space-x-6 w-max"
           style={{ transform: 'translateX(0%)' }}
         >
-          {row1Images.concat(row1Images).map((image, index) => (
+          {row1Images.map((image, index) => (
             <div key={index} className="relative w-72 h-80 flex-shrink-0 rounded-lg overflow-hidden shadow-md">
               <Image
                 src={image.src}
@@ -136,9 +112,6 @@ const Gallery = () => {
                 fill
                 className="object-cover"
               />
-              <div className="absolute bottom-0 right-0 bg-black bg-opacity-50 text-white text-xs px-2 py-1">
-                AI GENERATED
-              </div>
             </div>
           ))}
         </div>
@@ -148,10 +121,10 @@ const Gallery = () => {
       <div className="relative py-4">
         <div 
           ref={row2Ref} 
-          className="flex space-x-6 w-[200%]"
+          className="flex space-x-6 w-max"
           style={{ transform: 'translateX(-50%)' }}
         >
-          {row2Images.concat(row2Images).map((image, index) => (
+          {row2Images.map((image, index) => (
             <div key={index} className="relative w-72 h-80 flex-shrink-0 rounded-lg overflow-hidden shadow-md">
               <Image
                 src={image.src}
@@ -159,9 +132,6 @@ const Gallery = () => {
                 fill
                 className="object-cover"
               />
-              <div className="absolute bottom-0 right-0 bg-black bg-opacity-50 text-white text-xs px-2 py-1">
-                AI GENERATED
-              </div>
             </div>
           ))}
         </div>

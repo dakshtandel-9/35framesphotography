@@ -283,7 +283,7 @@ const ContactForm = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Phone</h3>
+                  <p className="font-semibold text-gray-900">Phone</p>
                   <p className="text-gray-600">+91 98450 12345</p>
                 </div>
               </div>
@@ -295,7 +295,7 @@ const ContactForm = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Email</h3>
+                  <p className="font-semibold text-gray-900">Email</p>
                   <p className="text-gray-600">info@35framesphotography.com</p>
                 </div>
               </div>
@@ -308,18 +308,17 @@ const ContactForm = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Location</h3>
+                  <p className="font-semibold text-gray-900">Location</p>
                   <p className="text-gray-600">Bangalore, Karnataka</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right side - Form */}
-          <div ref={formRef} className="bg-white rounded-2xl shadow-xl p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Right side - Form (reduce extra divs; use form directly) */}
+          <form ref={formRef} onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
               
-              <div className="form-field">
+              <fieldset className="form-field">
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                   Full Name *
                 </label>
@@ -333,9 +332,9 @@ const ContactForm = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="Enter your full name"
                 />
-              </div>
+              </fieldset>
 
-              <div className="form-field">
+              <fieldset className="form-field">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                   Email Address *
                 </label>
@@ -349,9 +348,9 @@ const ContactForm = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="Enter your email address"
                 />
-              </div>
+              </fieldset>
 
-              <div className="form-field">
+              <fieldset className="form-field">
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                   Phone Number
                 </label>
@@ -364,9 +363,9 @@ const ContactForm = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="Enter your phone number"
                 />
-              </div>
+              </fieldset>
 
-              <div className="form-field">
+              <fieldset className="form-field">
                 <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
                   Service Interested In *
                 </label>
@@ -387,9 +386,9 @@ const ContactForm = () => {
                   <option value="cinematography">Cinematography</option>
                   <option value="other">Other</option>
                 </select>
-              </div>
+              </fieldset>
 
-              <div className="form-field">
+              <fieldset className="form-field">
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                   Message *
                 </label>
@@ -403,7 +402,7 @@ const ContactForm = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
                   placeholder="Tell us about your photography needs..."
                 />
-              </div>
+              </fieldset>
 
               <button
                 ref={submitButtonRef}
@@ -420,8 +419,7 @@ const ContactForm = () => {
                   'Send Message'
                 )}
               </button>
-            </form>
-          </div>
+          </form>
         </div>
       </div>
     </section>
