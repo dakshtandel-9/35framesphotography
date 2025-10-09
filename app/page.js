@@ -10,6 +10,7 @@ import Testimonials from "@/components/Testimonials";
 import Gallery from "@/components/Gallery";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import CTAOffer from "@/components/CTAOffer";
 
 function HomeContent() {
   const { isLoading, completeLoading } = useLoading();
@@ -31,11 +32,15 @@ function HomeContent() {
         <section id="gallery">
           <Gallery />
         </section>
-        <section id="testimonials">
-          <Testimonials />
+        <section id="offer">
+          <CTAOffer />
         </section>
+        
         <section id="contact">
           <ContactForm />
+        </section>
+        <section id="testimonials">
+          <Testimonials />
         </section>
       </div>
     </>

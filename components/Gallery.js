@@ -9,6 +9,8 @@ const Gallery = () => {
   const sectionRef = useRef(null);
   const row1Ref = useRef(null);
   const row2Ref = useRef(null);
+  const row3Ref = useRef(null);
+  const row4Ref = useRef(null);
 
   useEffect(() => {
     // Register ScrollTrigger plugin
@@ -47,53 +49,103 @@ const Gallery = () => {
       }
     });
     
+    const row3Animation = gsap.to(row3Ref.current, {
+      x: '-40%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: row3Ref.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+    
+    const row4Animation = gsap.to(row4Ref.current, {
+      x: '40%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: row4Ref.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+    
     // Cleanup function
     return () => {
       row1Animation.kill();
       row2Animation.kill();
+      row3Animation.kill();
+      row4Animation.kill();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 
-  // Use local public/gallaryImage images and split half per row
-  const allImages = [
-    { src: '/gallaryImage/G1.jpg', alt: 'Gallery image 1' },
-    { src: '/gallaryImage/G2.jpg', alt: 'Gallery image 2' },
-    { src: '/gallaryImage/G3.webp', alt: 'Gallery image 3' },
-    { src: '/gallaryImage/G4.jpg', alt: 'Gallery image 4' },
-    { src: '/gallaryImage/G5.jpg', alt: 'Gallery image 5' },
-    { src: '/gallaryImage/G6.jpg', alt: 'Gallery image 6' },
-    { src: '/gallaryImage/G7.jpg', alt: 'Gallery image 7' },
-    { src: '/gallaryImage/G8.jpg', alt: 'Gallery image 8' },
-    { src: '/gallaryImage/G9.jpg', alt: 'Gallery image 9' },
-    { src: '/gallaryImage/G10.jpg', alt: 'Gallery image 10' },
-    { src: '/gallaryImage/G11.jpg', alt: 'Gallery image 11' },
-    { src: '/gallaryImage/G12.jpg', alt: 'Gallery image 12' },
-    { src: '/gallaryImage/G13.jpg', alt: 'Gallery image 13' },
-    { src: '/gallaryImage/G14.jpg', alt: 'Gallery image 14' },
-    { src: '/gallaryImage/G15.jpg', alt: 'Gallery image 15' },
-    { src: '/gallaryImage/G16.jpg', alt: 'Gallery image 16' },
-    { src: '/gallaryImage/G17.jpg', alt: 'Gallery image 17' },
-    { src: '/gallaryImage/G18.jpg', alt: 'Gallery image 18' },
-    { src: '/gallaryImage/G19.jpg', alt: 'Gallery image 19' },
-    { src: '/gallaryImage/G20.jpg', alt: 'Gallery image 20' },
-    { src: '/gallaryImage/G21.jpg', alt: 'Gallery image 21' },
-    { src: '/gallaryImage/G22.jpg', alt: 'Gallery image 22' },
-    { src: '/gallaryImage/G23.jpg', alt: 'Gallery image 23' },
-    { src: '/gallaryImage/G24.jpg', alt: 'Gallery image 24' },
+  // Use images from public/Row1, Row2, Row3 (landscape)
+  const row1Images = [
+    '/Row1/01.jpg',
+    '/Row1/02.jpg',
+    '/Row1/03.jpg',
+    '/Row1/04.jpg',
+    '/Row1/05.jpg',
+    '/Row1/06.jpg',
+    '/Row1/07.jpg',
+    '/Row1/01.jpg',
+    '/Row1/02.jpg',
+    '/Row1/03.jpg',
+    '/Row1/04.jpg',
+    '/Row1/05.jpg',
+    '/Row1/06.jpg',
+    '/Row1/07.jpg',
   ];
-  const midpoint = Math.ceil(allImages.length / 2);
-  const row1Images = allImages.slice(0, midpoint);
-  const row2Images = allImages.slice(midpoint);
+  const row2Images = [
+    '/Row2/01.jpg',
+    '/Row2/02.jpg',
+    '/Row2/03.jpg',
+    '/Row2/04.jpg',
+    '/Row2/05.jpg',
+    '/Row2/06.jpg',
+     '/Row2/01.jpg',
+    '/Row2/02.jpg',
+    '/Row2/03.jpg',
+    '/Row2/04.jpg',
+    '/Row2/05.jpg',
+    '/Row2/06.jpg',
+  ];
+  const row3Images = [
+    '/Row3/imgi_14_5-10.jpg',
+    '/Row3/imgi_15_8-9.jpg',
+    '/Row3/imgi_17_2-10.jpg',
+    '/Row3/imgi_18_3-10.jpg',
+    '/Row3/imgi_21_9-9.jpg',
+    '/Row3/imgi_22_10-8.jpg',
+    '/Row3/imgi_14_5-10.jpg',
+    '/Row3/imgi_15_8-9.jpg',
+    '/Row3/imgi_17_2-10.jpg',
+    '/Row3/imgi_18_3-10.jpg',
+    '/Row3/imgi_21_9-9.jpg',
+    '/Row3/imgi_22_10-8.jpg',
+  ];
+  const row4Images = [
+    '/Row4/imgi_10_35F03378-scaled.jpg',
+    '/Row4/imgi_11_35F03314-scaled.jpg',
+    '/Row4/imgi_12_35F03284-scaled.jpg',
+    '/Row4/imgi_13_35F03397-scaled.jpg',
+    '/Row4/imgi_14_35F03534-1-scaled.jpg',
+    '/Row4/imgi_15_35F03594-scaled.jpg',
+    '/Row4/imgi_30_35F03696-scaled.jpg',
+    '/Row4/imgi_4_35F03663-scaled.jpg',
+    '/Row4/imgi_8_35F03199-scaled.jpg',
+  ];
 
   return (
     <section ref={sectionRef} className="py-16 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 mb-12">
         <h2 className="gallery-title text-3xl md:text-4xl font-bold text-center text-gray-900 mb-3">
-          Our Professional Headshots
+          Our Professional photoshoots
         </h2>
         <p className="text-center text-gray-600 mb-8">
-          Browse our gallery of AI-generated professional headshots
+          Browse our gallery professional photoshoots
         </p>
       </div>
       
@@ -104,13 +156,14 @@ const Gallery = () => {
           className="flex space-x-6 w-max"
           style={{ transform: 'translateX(0%)' }}
         >
-          {row1Images.map((image, index) => (
-            <div key={index} className="relative w-72 h-80 flex-shrink-0 rounded-lg overflow-hidden shadow-md">
+          {row1Images.map((src, index) => (
+            <div key={`r1-${index}`} className="relative w-72 aspect-video flex-shrink-0 rounded-lg overflow-hidden shadow-md">
               <Image
-                src={image.src}
-                alt={image.alt}
+                src={src}
+                alt={`Row 1 image ${index + 1}`}
                 fill
                 className="object-cover"
+                priority={index === 0}
               />
             </div>
           ))}
@@ -124,11 +177,51 @@ const Gallery = () => {
           className="flex space-x-6 w-max"
           style={{ transform: 'translateX(-50%)' }}
         >
-          {row2Images.map((image, index) => (
-            <div key={index} className="relative w-72 h-80 flex-shrink-0 rounded-lg overflow-hidden shadow-md">
+          {row2Images.map((src, index) => (
+            <div key={`r2-${index}`} className="relative w-72 aspect-video flex-shrink-0 rounded-lg overflow-hidden shadow-md">
               <Image
-                src={image.src}
-                alt={image.alt}
+                src={src}
+                alt={`Row 2 image ${index + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Third row - scrolls left */}
+      <div className="relative py-4">
+        <div 
+          ref={row3Ref} 
+          className="flex space-x-6 w-max"
+          style={{ transform: 'translateX(0%)' }}
+        >
+          {row3Images.map((src, index) => (
+            <div key={`r3-${index}`} className="relative w-72 aspect-video flex-shrink-0 rounded-lg overflow-hidden shadow-md">
+              <Image
+                src={src}
+                alt={`Row 3 image ${index + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Fourth row - scrolls right */}
+      <div className="relative py-4">
+        <div 
+          ref={row4Ref} 
+          className="flex space-x-6 w-max"
+          style={{ transform: 'translateX(-40%)' }}
+        >
+          {row4Images.map((src, index) => (
+            <div key={`r4-${index}`} className="relative w-72 aspect-video flex-shrink-0 rounded-lg overflow-hidden shadow-md">
+              <Image
+                src={src}
+                alt={`Row 4 image ${index + 1}`}
                 fill
                 className="object-cover"
               />

@@ -47,22 +47,26 @@ const Testimonials = () => {
     );
     
     // Continuous horizontal scrolling animation for testimonials
+    if (!scrollContainerRef.current || !sectionRef.current) return;
     const totalWidth = scrollContainerRef.current.scrollWidth;
     const containerWidth = scrollContainerRef.current.offsetWidth;
-    
-    const scrollAnimation = gsap.to(scrollContainerRef.current, {
+
+    // Create the animation first (paused), then wire ScrollTrigger handlers
+    let scrollAnimation = gsap.to(scrollContainerRef.current, {
       x: -totalWidth / 2, // Move half the total width to create seamless loop
       duration: 40, // 40 seconds for full cycle - slower for better readability
       ease: 'none',
-      repeat: -1, // Infinite repeat
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 80%',
-        onEnter: () => scrollAnimation.play(),
-        onLeave: () => scrollAnimation.pause(),
-        onEnterBack: () => scrollAnimation.play(),
-        onLeaveBack: () => scrollAnimation.pause(),
-      }
+      repeat: -1,
+      paused: true
+    });
+
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: 'top 80%',
+      onEnter: () => scrollAnimation.play(),
+      onLeave: () => scrollAnimation.pause(),
+      onEnterBack: () => scrollAnimation.play(),
+      onLeaveBack: () => scrollAnimation.pause(),
     });
     
     // Animate individual testimonial cards on scroll

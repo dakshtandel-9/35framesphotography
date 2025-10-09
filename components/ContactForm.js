@@ -11,10 +11,10 @@ const ContactForm = () => {
   const formRef = useRef(null);
   const submitButtonRef = useRef(null);
   const [formData, setFormData] = useState({
+    service: '',
     name: '',
     email: '',
     phone: '',
-    service: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -318,6 +318,30 @@ const ContactForm = () => {
           {/* Right side - Form (reduce extra divs; use form directly) */}
           <form ref={formRef} onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
               
+              {/* Services moved to the top */}
+              <fieldset className="form-field">
+                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                  Service Interested In *
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
+                >
+                  <option value="">Select a service</option>
+                  <option value="wedding">Wedding Photography</option>
+                  <option value="pre-wedding">Pre-Wedding Shoots</option>
+                  <option value="engagement">Engagement Photography</option>
+                  <option value="event">Event Photography</option>
+                  <option value="portrait">Portrait Sessions</option>
+                  <option value="cinematography">Cinematography</option>
+                  <option value="other">Other</option>
+                </select>
+              </fieldset>
+
               <fieldset className="form-field">
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                   Full Name *
@@ -329,7 +353,7 @@ const ContactForm = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
                   placeholder="Enter your full name"
                 />
               </fieldset>
@@ -345,7 +369,7 @@ const ContactForm = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
                   placeholder="Enter your email address"
                 />
               </fieldset>
@@ -360,33 +384,11 @@ const ContactForm = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white"
                   placeholder="Enter your phone number"
                 />
               </fieldset>
 
-              <fieldset className="form-field">
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                  Service Interested In *
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                >
-                  <option value="">Select a service</option>
-                  <option value="wedding">Wedding Photography</option>
-                  <option value="pre-wedding">Pre-Wedding Shoots</option>
-                  <option value="engagement">Engagement Photography</option>
-                  <option value="event">Event Photography</option>
-                  <option value="portrait">Portrait Sessions</option>
-                  <option value="cinematography">Cinematography</option>
-                  <option value="other">Other</option>
-                </select>
-              </fieldset>
 
               <fieldset className="form-field">
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
@@ -399,7 +401,7 @@ const ContactForm = () => {
                   onChange={handleInputChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none bg-white"
                   placeholder="Tell us about your photography needs..."
                 />
               </fieldset>

@@ -122,7 +122,7 @@ const LoadingAnimation = ({ onComplete }) => {
         {/* Logo */}
         <div ref={logoRef} className="flex items-center justify-center">
           <Image 
-            src="https://35framesphotography.com/wp-content/uploads/2023/06/imgi_2_35-frames-w-1.png" 
+            src="/logo.png" 
             alt="35 Frames Photography" 
             width={200} 
             height={50} 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 export default function BackgroundAudio() {
   const audioRef = useRef(null);
@@ -145,13 +146,13 @@ export default function BackgroundAudio() {
           className="w-11 h-11 rounded-full flex items-center justify-center shadow-md bg-green-600 text-white hover:bg-green-700 transition-colors"
           aria-label="Chat on WhatsApp"
         >
-          <img
+          <Image
             src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png"
             alt="WhatsApp logo"
-            width="20"
-            height="20"
+            width={20}
+            height={20}
             className="w-5 h-5"
-            loading="lazy"
+            priority={false}
           />
         </a>
 

@@ -19,19 +19,11 @@ const Footer = () => {
   const contactInfoRef = useRef([]);
 
   const navigationSections = [
-    { name: 'Home', href: '#home', id: 'home' },
-    { name: 'Services', href: '#services', id: 'services' },
-    { name: 'Gallery', href: '#gallery', id: 'gallery' },
-    { name: 'Testimonials', href: '#testimonials', id: 'testimonials' },
-    { name: 'Contact', href: '#contact', id: 'contact' }
+   
   ];
 
   const services = [
-    'Wedding Photography',
-    'Pre-Wedding Shoots',
-    'Event Photography',
-    'Portrait Sessions',
-    'Cinematography'
+    
   ];
 
   const socialLinks = [
@@ -195,7 +187,7 @@ const Footer = () => {
             <div ref={el => sectionsRef.current[0] = el} className="lg:col-span-1" style={{ opacity: 0 }}>
               <div ref={logoRef} className="mb-6" style={{ opacity: 0 }}>
                 <Image 
-                  src="https://35framesphotography.com/wp-content/uploads/2023/06/imgi_2_35-frames-w-1.png" 
+                  src="/logo.png" 
                   alt="35 Frames Photography" 
                   width={160} 
                   height={40} 

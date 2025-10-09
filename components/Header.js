@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -12,24 +12,10 @@ if (typeof window !== 'undefined') {
 }
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const headerRef = useRef(null);
   const logoRef = useRef(null);
-  const navItemsRef = useRef([]);
-  const mobileMenuRef = useRef(null);
-  const mobileNavItemsRef = useRef([]);
-  const menuButtonRef = useRef(null);
   const contactButtonRef = useRef(null);
   const isHeaderOpaqueRef = useRef(false);
-
-  const navigationItems = useMemo(() => ([
-    { name: 'Home', href: '#home', id: 'home' },
-    { name: 'Services', href: '#services', id: 'services' },
-    { name: 'Gallery', href: '#gallery', id: 'gallery' },
-    { name: 'Testimonials', href: '#testimonials', id: 'testimonials' },
-    { name: 'Contact', href: '#contact', id: 'contact' }
-  ]), []);
 
   // Smooth scroll function
   const scrollToSection = (sectionId) => {
@@ -43,61 +29,6 @@ const Header = () => {
         },
         ease: "power2.inOut"
       });
-    }
-    setIsMenuOpen(false);
-  };
-
-  const toggleMenu = () => {
-    if (!isMenuOpen) {
-      setIsMenuOpen(true);
-      setTimeout(() => {
-        if (mobileMenuRef.current) {
-          gsap.fromTo(
-            mobileMenuRef.current,
-            { height: 0, opacity: 0 },
-            { height: 'auto', opacity: 1, duration: 0.4, ease: 'power3.out' }
-          );
-          
-          mobileNavItemsRef.current.forEach((item, index) => {
-            if (item) {
-              gsap.fromTo(
-                item,
-                { x: -50, opacity: 0 },
-                { 
-                  x: 0, 
-                  opacity: 1, 
-                  duration: 0.4, 
-                  delay: index * 0.1, 
-                  ease: 'power2.out' 
-                }
-              );
-            }
-          });
-        }
-      }, 10);
-    } else {
-      if (mobileMenuRef.current) {
-        mobileNavItemsRef.current.forEach((item, index) => {
-          if (item) {
-            gsap.to(item, {
-              x: -50,
-              opacity: 0,
-              duration: 0.3,
-              delay: (mobileNavItemsRef.current.length - 1 - index) * 0.05,
-              ease: 'power2.in'
-            });
-          }
-        });
-        
-        gsap.to(mobileMenuRef.current, {
-          height: 0,
-          opacity: 0,
-          duration: 0.3,
-          delay: 0.2,
-          ease: 'power3.in',
-          onComplete: () => setIsMenuOpen(false)
-        });
-      }
     }
   };
 
@@ -153,37 +84,7 @@ const Header = () => {
           );
         }
 
-        // Navigation items animation
-        navItemsRef.current.forEach((item, index) => {
-          if (item) {
-            gsap.fromTo(
-              item,
-              { y: -20, opacity: 0 },
-              { y: 0, opacity: 1, duration: 0.5, delay: 0.6 + index * 0.1, ease: 'power2.out' }
-            );
-
-            // Hover animations
-            item.addEventListener('mouseenter', () => {
-              if (!isHeaderOpaqueRef.current) return;
-              gsap.to(item, {
-                y: -2,
-                scale: 1.05,
-                duration: 0.3,
-                ease: 'power2.out'
-              });
-            });
-
-            item.addEventListener('mouseleave', () => {
-              if (!isHeaderOpaqueRef.current) return;
-              gsap.to(item, {
-                y: 0,
-                scale: 1,
-                duration: 0.3,
-                ease: 'power2.out'
-              });
-            });
-          }
-        });
+        // Navigation items animation removed since nav is gone
 
         // Contact button animations
         if (contactButtonRef.current) {
@@ -237,46 +138,9 @@ const Header = () => {
           });
         }
 
-        // Menu button animation
-        if (menuButtonRef.current) {
-          gsap.fromTo(
-            menuButtonRef.current,
-            { scale: 0.8, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.7)', delay: 1 }
-          );
+        // Menu button animation removed since mobile menu is gone
 
-          menuButtonRef.current.addEventListener('mouseenter', () => {
-            if (!isHeaderOpaqueRef.current) return;
-            gsap.to(menuButtonRef.current, {
-              scale: 1.1,
-              rotation: 5,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          });
-
-          menuButtonRef.current.addEventListener('mouseleave', () => {
-            if (!isHeaderOpaqueRef.current) return;
-            gsap.to(menuButtonRef.current, {
-              scale: 1,
-              rotation: 0,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          });
-        }
-
-        // Active section tracking
-        const sections = navigationItems.map(item => item.id);
-        sections.forEach(sectionId => {
-          ScrollTrigger.create({
-            trigger: `#${sectionId}`,
-            start: "top 100px",
-            end: "bottom 100px",
-            onEnter: () => setActiveSection(sectionId),
-            onEnterBack: () => setActiveSection(sectionId)
-          });
-        });
+        // Active section tracking removed since navigation items are not present
 
       } catch (error) {
         console.error('Failed to load GSAP:', error);
@@ -288,7 +152,7 @@ const Header = () => {
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, [navigationItems]);
+  }, []);
 
   return (
     <header 
@@ -302,7 +166,7 @@ const Header = () => {
           <div ref={logoRef} className="flex-shrink-0">
             <Link href="#home" onClick={() => scrollToSection('home')}>
               <Image 
-                src="https://35framesphotography.com/wp-content/uploads/2023/06/imgi_2_35-frames-w-1.png" 
+                src="/logo.png" 
                 alt="35 Frames Photography" 
                 width={520} 
                 height={130} 
@@ -312,26 +176,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            {navigationItems.map((item, index) => (
-              <button
-                key={item.id}
-                ref={el => navItemsRef.current[index] = el}
-                onClick={() => scrollToSection(item.id)}
-                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 ${
-                  activeSection === item.id 
-                    ? 'text-amber-600' 
-                    : 'text-gray-700 hover:text-amber-600'
-                }`}
-              >
-                {item.name}
-                {activeSection === item.id && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"></span>
-                )}
-              </button>
-            ))}
-          </nav>
+          {/* Desktop Navigation removed as requested */}
 
           {/* Desktop Contact Button */}
           <div className="hidden lg:block">
@@ -344,55 +189,10 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            ref={menuButtonRef}
-            onClick={toggleMenu}
-            className="lg:hidden p-2 rounded-md text-gray-700 hover:text-amber-600 hover:bg-gray-100 transition-colors duration-200"
-            aria-label="Toggle menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+          {/* Mobile menu removed as requested */}
         </div>
 
-        {/* Mobile Navigation Menu */}
-        {isMenuOpen && (
-          <div 
-            ref={mobileMenuRef}
-            className="lg:hidden bg-white border-t border-gray-200 shadow-lg"
-            style={{ height: 0, opacity: 0 }}
-          >
-            <div className="px-4 py-6 space-y-4">
-              {navigationItems.map((item, index) => (
-                <button
-                  key={item.id}
-                  ref={el => mobileNavItemsRef.current[index] = el}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors duration-200 ${
-                    activeSection === item.id 
-                      ? 'text-amber-600 bg-amber-50' 
-                      : 'text-gray-700 hover:text-amber-600 hover:bg-gray-50'
-                  } rounded-md`}
-                  style={{ opacity: 0, transform: 'translateX(-50px)' }}
-                >
-                  {item.name}
-                </button>
-              ))}
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="w-full mt-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-3 rounded-full font-medium shadow-lg transition-all duration-300"
-              >
-                Get Quote
-              </button>
-            </div>
-          </div>
-        )}
+        {/* Mobile navigation removed */}
       </div>
     </header>
   );
