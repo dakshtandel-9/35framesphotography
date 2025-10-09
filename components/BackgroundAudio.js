@@ -138,6 +138,24 @@ export default function BackgroundAudio() {
           )}
         </button>
 
+        {/* Instagram */}
+        <a
+          href="https://www.instagram.com/storiesby35frames/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-11 h-11 rounded-full flex items-center justify-center shadow-md bg-pink-600 text-white hover:bg-pink-700 transition-colors"
+          aria-label="Open Instagram"
+        >
+          <Image
+            src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+            alt="Instagram logo"
+            width={20}
+            height={20}
+            className="w-5 h-5"
+            priority={false}
+          />
+        </a>
+
         {/* WhatsApp */}
         <a
           href="https://wa.me/919900491382"

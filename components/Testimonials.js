@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Image from 'next/image';
 
 const Testimonials = () => {
   const sectionRef = useRef(null);
@@ -201,21 +200,10 @@ const Testimonials = () => {
               key={`first-${index}`}
               className="testimonial-card bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow flex-shrink-0 w-80"
             >
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                  <Image 
-                    src={testimonial.avatar} 
-                    alt={testimonial.name} 
-                    width={48} 
-                    height={48}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
-                  <p className="text-sm text-gray-600">{testimonial.position}</p>
-                  <p className="text-xs text-gray-500">{testimonial.location}</p>
-                </div>
+              <div className="mb-4">
+                <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+                <p className="text-sm text-gray-600">{testimonial.position}</p>
+                <p className="text-xs text-gray-500">{testimonial.location}</p>
               </div>
               
               <div className="flex mb-3">
@@ -236,21 +224,10 @@ const Testimonials = () => {
               key={`second-${index}`}
               className="testimonial-card bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow flex-shrink-0 w-80"
             >
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                  <Image 
-                    src={testimonial.avatar} 
-                    alt={testimonial.name} 
-                    width={48} 
-                    height={48}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
-                  <p className="text-sm text-gray-600">{testimonial.position}</p>
-                  <p className="text-xs text-gray-500">{testimonial.location}</p>
-                </div>
+              <div className="mb-4">
+                <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+                <p className="text-sm text-gray-600">{testimonial.position}</p>
+                <p className="text-xs text-gray-500">{testimonial.location}</p>
               </div>
               
               <div className="flex mb-3">

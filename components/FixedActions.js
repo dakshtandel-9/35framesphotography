@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 const whatsappNumber = '+919900491382';
 const phoneNumber = '+919900491382';
@@ -19,6 +20,22 @@ const FixedActions = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <div className="flex flex-col gap-3">
+        {/* Instagram */}
+        <a
+          href="https://www.instagram.com/storiesby35frames/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          className="w-12 h-12 rounded-full shadow-lg grid place-items-center text-white hover:scale-105 transition-transform bg-gradient-to-tr from-purple-500 via-pink-500 to-orange-500"
+        >
+          <Image
+            src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+            alt="Instagram logo"
+            width={24}
+            height={24}
+            className="w-6 h-6"
+          />
+        </a>
         <button
           type="button"
           onClick={handleWhatsApp}

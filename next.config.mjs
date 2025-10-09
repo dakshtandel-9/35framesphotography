@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['35framesphotography.com', 'images.unsplash.com', 'randomuser.me'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        port: '',
+        pathname: '/wikipedia/**',
+      },
+    ],
   },
 };
 
