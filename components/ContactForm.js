@@ -207,6 +207,13 @@ const ContactForm = () => {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 2000));
       
+      // Track conversion event
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-17652294834/rH7rCN3wv60bELLJouFB'
+        });
+      }
+      
       // Success animation sequence
       gsap.timeline()
         .to(submitButtonRef.current, {
