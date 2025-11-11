@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       <head>
         {/* Google tag (gtag.js) */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17652294834"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17648713009"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -34,7 +34,20 @@ export default function RootLayout({ children }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'AW-17652294834');
+            gtag('config', 'AW-17648713009');
+          `}
+        </Script>
+        
+        {/* Google tag (gtag.js) events */}
+        <Script id="google-ads-events" strategy="afterInteractive">
+          {`
+            gtag('event', 'ads_conversion_About_Us_1', {
+              // About Us conversion tracking
+            });
+            
+            gtag('event', 'ads_conversion_Contact_Us_1', {
+              // Contact Us conversion tracking
+            });
           `}
         </Script>
       </head>

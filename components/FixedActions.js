@@ -3,8 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 
-const whatsappNumber = '+919900491382';
-const phoneNumber = '+919900491382';
+const whatsappNumber = '+916305800108';
+const phoneNumber = '+916305800108';
 
 const FixedActions = () => {
   const handleWhatsApp = () => {

@@ -26,11 +26,12 @@ function HomeContent() {
         <section id="home">
           <ExactHero />
         </section>
-        <section id="services">
-          <HowItWorks />
-        </section>
+        
         <section id="gallery">
           <Gallery />
+        </section>
+        <section id="services">
+          <HowItWorks />
         </section>
         <section id="offer">
           <CTAOffer />
