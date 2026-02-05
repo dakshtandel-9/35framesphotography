@@ -18,6 +18,34 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "35 Frames Photography - Bangalore",
   description: "35 Frames Photography is a professional photography studio in Bangalore, Karnataka. We offer a wide range of services including portrait, landscape, event, and commercial photography. Contact us today to book a session.",
+  metadataBase: new URL('https://35framesphotography.com'),
+  openGraph: {
+    title: "35 Frames Photography - Bangalore",
+    description: "35 Frames Photography is a professional photography studio in Bangalore, Karnataka. We offer a wide range of services including portrait, landscape, event, and commercial photography. Contact us today to book a session.",
+    url: 'https://35framesphotography.com',
+    siteName: '35 Frames Photography',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: '35 Frames Photography Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "35 Frames Photography - Bangalore",
+    description: "35 Frames Photography is a professional photography studio in Bangalore, Karnataka. We offer a wide range of services including portrait, landscape, event, and commercial photography. Contact us today to book a session.",
+    images: ['/og-image.png'],
+  },
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -37,7 +65,7 @@ export default function RootLayout({ children }) {
             gtag('config', 'AW-17648713009');
           `}
         </Script>
-        
+
         {/* Google tag (gtag.js) events */}
         <Script id="google-ads-events" strategy="afterInteractive">
           {`
